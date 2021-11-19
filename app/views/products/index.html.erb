@@ -1,0 +1,36 @@
+<div class="pb-5">
+  
+  <h1 class="text-center pt-4 mb-4">Products List</h1>
+  <div class="card-center px-4" >
+    <%= form_tag(products_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search], placeholder: "Type product name") %>
+      <%= submit_tag('Search', class: "btn btn-outline-success") %>
+    <% end %>
+  </div>
+
+  <% if @products.count == 0 %>
+    <p class="fs-4 ms-4 mt-4">Cannot find any products</p>
+    
+  <% elsif @products.count == 1 %>
+    <% @products.each do |product| %>
+      <%= render 'product', product: product %>
+    <% end %>
+  <% else %>
+    <div class="apple_pagination">
+      <%= will_paginate @products, :container => false %>
+    </div> 
+    <% @products.each do |product| %>
+      <%= render 'product', product: product %>
+    <% end %>
+    <div class="apple_pagination">
+      <%= will_paginate @products, :container => false %>
+    </div> 
+  <% end %>
+   
+
+
+  <div style="position: fixed; bottom: 20px; right: 150px; z-index: 1">
+    <%= link_to " Thêm SP", new_product_path, class: "fs-3 btn btn-success rounded-circle" %>
+  </div>
+  
+</div>
