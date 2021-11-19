@@ -10,16 +10,22 @@ class ProductsController < ApplicationController
     end
   
     def create
+      
       @product = Product.new(product_params)
+     
+      @product[:sku] = "SP1000" + Product.last[:id].next.to_s
   
-      if @product.save
+      if @product.save 
+       
+
         flash[:notice] = "Product was created successfully!"
         redirect_to products_path
       else
         render :new
       end
+     sender
+      
     end
-  
     def edit
     end
   
