@@ -1,13 +1,20 @@
 <div class="pb-5">
   
   <h1 class="text-center pt-4 mb-4">Products List</h1>
-  <div class="card-center px-4" >
-    <%= form_tag(products_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search], placeholder: "Type product name") %>
-      <%= submit_tag('Search', class: "btn btn-outline-success") %>
-    <% end %>
-  </div>
+      <div class="card-center px-2" >
+        
+          <%= form_tag(products_path, method: :get) do %>
+            <%= text_field_tag(:search, params[:search] ,class:" col-sm-10",placeholder: "Type product name") %>
+            <%= submit_tag('Search', class: "btn-success btn mb-2") %>
+            
+          <% end %>
+          
+      </div>
 
+        <%= render 'category' %>
+         
+          
+       
   <% if @products.count == 0 %>
     <p class="fs-4 ms-4 mt-4">Cannot find any products</p>
     
@@ -33,4 +40,5 @@
     <%= link_to " Thêm SP", new_product_path, class: "fs-3 btn btn-success rounded-circle" %>
   </div>
   
+
 </div>

@@ -1,18 +1,13 @@
 class Product < ApplicationRecord
 
     validates :sku, presence: true
-    validates :title, presence: true, length: {minimum:10, maximum:40}
+    validates :title, presence: true, length: {minimum:5, maximum:40}
     validates :price, presence: true
     validates :quantity, presence: true
   
-    # def self.search(term)
-    #   res = []
-    #   if term && !term.empty?
-    #     res << Product.find_by(title: term)
-    #   end
-    #   res
-    # end
-  
+    validates :category, inclusion: { in: %w(Coffee Tea Grindice Others), message: "%{value} is not a valid value" }
+
+    
     def self.fill_out_attr
       products = Product.all
       for product in products
@@ -29,6 +24,17 @@ class Product < ApplicationRecord
         all
       end
     end
+    def self.filter(tag)
+      if tag
+        where(category:tag)
+
+      else
+        all
+      end
+    end
+    
+   
+
   end
  
  

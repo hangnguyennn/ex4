@@ -1,0 +1,11 @@
+
+<div class="d-flex justify-content-center mb-4">
+
+       
+<%= link_to "All", root_path, class:"btn btn-outline-primary rounded-pill mx-2 px-4" %>
+  <%= button_to "Tea", products_path, method: :get, params: { category_tag: "Tea" }, class:"btn btn-outline-primary rounded-pill mx-2 px-4" %>
+  <%= button_to "Coffee", products_path, method: :get, params: { category_tag: "Coffee" }, class:"btn btn-outline-primary rounded-pill mx-2 px-4" %>
+  <%= button_to "Grindice", products_path, method: :get, params: { category_tag: "Grindice" }, class:"btn btn-outline-primary rounded-pill mx-2 px-4" %>
+  <%= button_to "Others", products_path, method: :get, params: { category_tag: "Others" }, class:"btn btn-outline-primary rounded-pill mx-2 px-4" %>
+</div>
+</div>

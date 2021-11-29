@@ -1,4 +1,6 @@
+
 <div class="card mx-auto mb-3" style="max-width: 1000px; min-height: 200px">
+    
   <div class="row g-0">
     <div class="col-md-3">
       <img src="<%= product.image %>" class="rounded-start img-thumbnail" style="max-width: 200px" alt="...">
@@ -13,6 +15,7 @@
     </div>
     <div class="col-md-3">
       <div class="card-body float-end">
+      <%= link_to 'Show', product_path(product),class:"btn btn-success "%>
         <%= link_to "Edit", edit_product_path(product), class: "btn btn-success" %>
         <%= link_to "Delete", product_path(product),
                         method: :delete,

@@ -1,13 +1,22 @@
 class ProductsController < ApplicationController
-    before_action :find_product, only: [:edit, :update, :destroy]
+    before_action :find_product, only: [:show, :edit, :update, :destroy]
   
     def index
-      @products = Product.search(params[:search]).paginate(page: params[:page], per_page: 5).order(id: :desc)
+      if params[:category_tag]
+        @products = Product.filter(params[:category_tag]).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
+      else
+        @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
+      end
     end
-  
+
+    def show
+    end
+    
+
     def new
       @product = Product.new
     end
+    
   
     def create
       
@@ -26,11 +35,15 @@ class ProductsController < ApplicationController
      sender
       
     end
+    
     def edit
+      
+     
     end
   
     def update
       if @product.update(product_params)
+        
         flash[:notice] = "Product was updated successfully!"
         redirect_to products_path
       else
@@ -52,9 +65,13 @@ class ProductsController < ApplicationController
     def search
       @product = Product.search(params[:search])
     end
+
+  
   
     def product_params
-      params.require(:product).permit(:sku, :title, :price, :quantity, :image, :search)
+      params.require(:product).permit(:sku, :title, :price, :quantity, :image, :search,:category)
     end
-  
+
+    
+    
   end

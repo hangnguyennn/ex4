@@ -6,5 +6,5 @@ root 'products#index'
 
 
 
-resources :products, except: [:show]
+resources :products
 end
