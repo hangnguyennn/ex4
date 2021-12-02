@@ -1,14 +1,16 @@
 <div class="pb-5">
-  
+  <div class="float-end mt-2 me-3"><%= link_to "Sign Up", new_user_path, class:"btn btn-primary" %></div>
+  <br>
+
   <h1 class="text-center pt-4 mb-4">Products List</h1>
-      <div class="card-center px-2" >
         
-          <%= form_tag(products_path, method: :get) do %>
-            <%= text_field_tag(:search, params[:search] ,class:" col-sm-10",placeholder: "Type product name") %>
-            <%= submit_tag('Search', class: "btn-success btn mb-2") %>
-            
-          <% end %>
-          
+      <div class="px-2 d-flex justify-content-center mb-3" >
+        <%= form_tag(products_path, method: :get) do %>
+          <%= text_field_tag(:search, params[:search] ,class:"w-75", placeholder: "Type product name") %>
+          <%= submit_tag('Search', class: "btn-success btn mb-2") %>
+        <% end %>
+
+           
       </div>
 
         <%= render 'category' %>

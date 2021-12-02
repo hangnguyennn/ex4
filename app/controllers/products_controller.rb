@@ -12,6 +12,8 @@ class ProductsController < ApplicationController
     def show
     end
     
+    def size
+    end  
 
     def new
       @product = Product.new

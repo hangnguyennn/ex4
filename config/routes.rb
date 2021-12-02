@@ -7,4 +7,6 @@ root 'products#index'
 
 
 resources :products
+# get  'users/new'
+resources :users
 end
